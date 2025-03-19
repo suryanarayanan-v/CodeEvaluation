@@ -6,9 +6,9 @@ def clone_github_repo(repo_url):
         os.system(f"git clone {repo_url}")
         print(f"Repository cloned successfully: {repo_url}")
         # only interested in part4 bloglist so moving that to root
-
-        os.makedirs("bloglist", exist_ok=True)
-        os.system("cp -r fullstackopen/part4/bloglist/bloglist-backend/* bloglist")
+        
+        
+        os.system("cp -r fullstackopen/part4/bloglist/bloglist-backend/* .")
         os.system("rm -r fullstackopen")
     except Exception as e:
         print(f"Failed to clone the repository. Error: {e}")
