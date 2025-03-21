@@ -13,10 +13,6 @@ def clone_github_repo(repo_url):
     except Exception as e:
         print(f"Failed to clone the repository. Error: {e}")
 
-def generate_samples():
-
-
 if __name__ == "__main__":
     if not os.path.exists('bloglist'):
         clone_github_repo('https://github.com/suryanarayanan-v/fullstackopen.git')
-    generate_samples()
