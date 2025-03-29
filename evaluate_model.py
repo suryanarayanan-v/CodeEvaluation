@@ -1,4 +1,3 @@
-# evaluate_model.py
 import json
 import torch
 import transformers
@@ -7,8 +6,12 @@ import argparse
 import os
 from tqdm import tqdm
 
-def format_prompt(sample, fim_enabled=False, fim_token="<fim_middle>", prefix_token="<fim_prefix>", suffix_token="<fim_suffix>", eos_token="<|endoftext|>"):
+def format_prompt(sample, fim_enabled=True, fim_token="<fim_middle>", prefix_token="<fim_prefix>", suffix_token="<fim_suffix>", eos_token="<|endoftext|>"):
     if fim_enabled:
+        print(f"FIM Tokens: {prefix_token, suffix_token, fim_token}")
+        # deepseek style infilling
+        if prefix_token == "<｜fim▁begin｜>":
+            return f"{prefix_token}{sample['prefix']}{fim_token}{sample['suffix']}{suffix_token}"
         return f"{prefix_token}{sample['prefix']}{suffix_token}{sample['suffix']}{fim_token}"
     else:
         return sample['prefix']
@@ -102,11 +105,14 @@ def run_evaluation(model_id, dataset_path, output_dir, use_fim, hf_token=None, q
         # use_fim = False
     elif "codellama" in model_id.lower():
         # CodeLlama uses different FIM tokens (check specific model card if needed)
-        # prefix_token = "<PRE>"
-        # suffix_token = "<SUF>"
-        # fim_token = "<MID>"
-        # But simple prefix often works well too.
-        pass # Keep defaults or adjust if needed based on experimentation/docs
+        prefix_token = "<PRE>"
+        suffix_token = "<SUF>"
+        fim_token = "<MID>"
+        # Keep defaults or adjust if needed based on experimentation/docs
+    elif "deepseek" in model_id.lower():
+        prefix_token = "<｜fim▁begin｜>"
+        fim_token = "<｜fim▁hole｜>"
+        suffix_token = "<｜fim▁end｜>"
 
     print("Loading metrics...")
     exact_match = load_metric("exact_match")
@@ -115,6 +121,7 @@ def run_evaluation(model_id, dataset_path, output_dir, use_fim, hf_token=None, q
     results = []
     prompts = [format_prompt(sample, use_fim, fim_token, prefix_token, suffix_token, eos_token) for sample in dataset]
     print(f"Generated {len(prompts)} prompts.")
+    print(prompts[0])
 
     print("Starting generation...")
     generated_completions = []
