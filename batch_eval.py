@@ -16,11 +16,7 @@ models_with_fim = [
     "codellama/CodeLlama-7b-Instruct-hf",
 ]
 
-models_without_fim_quant = [
-    "codellama/CodeLlama-34b-hf",
-    "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-
-]
+models_without_fim_quant = []
 
 quantization_levels = [None, 4, 8]
 
