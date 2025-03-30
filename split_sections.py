@@ -65,51 +65,53 @@ def create_sample(file_path, start_line, start_char, end_line, end_char, base_di
 # Manually adding segments for quality
 split_definitions = [
     # blogs.js
-    ("controllers/blogs.js", 7, 6, 7, 48),    # .populate(...) content
-    ("controllers/blogs.js", 12, 70, 12, 75),  # .end() vs .json({})
-    ("controllers/blogs.js", 13, 47, 13, 68),  # likes = 0 assignment logic
-    ("controllers/blogs.js", 19, 26, 25, 5),   # new Blog({...}) object content
-    ("controllers/blogs.js", 31, 1, 33, 1),  # Expect to return a response of code 201 with new blog
-    ("controllers/blogs.js", 41, 5, 43, 3),  # delete blog and return status 201
-    ("controllers/blogs.js", 45, 22, 45, 70),   # filter logic in deletion
-    ("controllers/blogs.js", 47, 25, 48, 1),   # send error json message
-    ("controllers/blogs.js", 59, 77, 60, 1),  # { new: true } option
+    ("bloglist/controllers/blogs.js", 7, 6, 7, 48),    # .populate(...) content
+    ("bloglist/controllers/blogs.js", 12, 70, 12, 75),  # .end() vs .json({})
+    ("bloglist/controllers/blogs.js", 13, 47, 13, 68),  # likes = 0 assignment logic
+    ("bloglist/controllers/blogs.js", 19, 26, 25, 5),   # new Blog({...}) object content
+    ("bloglist/controllers/blogs.js", 31, 1, 33, 1),  # Expect to return a response of code 201 with new blog
+    ("bloglist/controllers/blogs.js", 41, 5, 43, 3),  # delete blog and return status 201
+    ("bloglist/controllers/blogs.js", 45, 22, 45, 70),   # filter logic in deletion
+    ("bloglist/controllers/blogs.js", 47, 25, 48, 1),   # send error json message
+    ("bloglist/controllers/blogs.js", 59, 77, 60, 1),  # { new: true } option
     # users.js
-    ("controllers/users.js", 7, 1, 10, 1),     # Password length check body
-    ("controllers/users.js", 11, 30, 12, 1),  # bcrypt.hash arguments
-    ("controllers/users.js", 13, 16, 18, 1),   # new User({...}) object content
-    ("controllers/users.js", 26, 3, 26, 53),  # populate arguments
+    ("bloglist/controllers/users.js", 7, 1, 10, 1),     # Password length check body
+    ("bloglist/controllers/users.js", 11, 30, 12, 1),  # bcrypt.hash arguments
+    ("bloglist/controllers/users.js", 13, 16, 18, 1),   # new User({...}) object content
+    ("bloglist/controllers/users.js", 26, 3, 26, 53),  # populate arguments
     # user_api.test.js
-    ("tests/user_api.test.js", 16, 1, 21, 1), # beforeEach setup
-    ("tests/user_api.test.js", 27, 22, 32, 1), # newUser object for short username test
-    ("tests/user_api.test.js", 33, 50, 36, 1), # .send(newUser).expect(400) chain
-    ("tests/user_api.test.js", 37, 1, 39, 63), # Assertion logic (check error message and lengths)
+    ("bloglist/tests/user_api.test.js", 16, 1, 21, 1), # beforeEach setup
+    ("bloglist/tests/user_api.test.js", 27, 22, 32, 1), # newUser object for short username test
+    ("bloglist/tests/user_api.test.js", 33, 50, 36, 1), # .send(newUser).expect(400) chain
+    ("bloglist/tests/user_api.test.js", 37, 1, 39, 63), # Assertion logic (check error message and lengths)
 
     # user.js - userSchemaTestJSON
-    ("models/user.js", 20, 25, 28, 1),
-    # Might be better to include other languages than just same things over and over
+    ("bloglist/models/user.js", 20, 25, 28, 1),
+
     # middleware.js
-    # ("utils/middleware.js", 7, 24, 9, 4),     # tokenExtractor: getting/cleaning auth header
-    # ("utils/middleware.js", 13, 32, 13, 51),  # jwt.decode(request.token)
-    # ("utils/middleware.js", 15, 16, 15, 46),  # await User.findById(decodedToken.id)
-    # ("utils/middleware.js", 24, 28, 24, 70),  # errorHandler: Check for ValidationError
-    # ("utils/middleware.js", 26, 59, 26, 105), # errorHandler: Check for E11000
-    # ("utils/middleware.js", 28, 31, 28, 70),  # errorHandler: Check for TokenExpiredError
-    # # list_helper.js
-    # ("utils/list_helper.js", 8, 15, 10, 2),   # totalLikes: reducer function body
-    # ("utils/list_helper.js", 12, 43, 12, 57),  # totalLikes: .reduce(reducer, 0)
-    # ("utils/list_helper.js", 15, 26, 17, 62),  # favoriteBlog: find condition (Math.max)
-    # ("utils/list_helper.js", 25, 34, 27, 28),  # mostBlogs: lodash maxBy callback
-    # ("utils/list_helper.js", 37, 11, 40, 8),   # mostLikes: inner map/reduce logic
-    # ("utils/list_helper.js", 42, 30, 42, 35),  # mostLikes: lo.maxBy property 'likes'
-    # # models/user.js
-    # ("models/user.js", 5, 14, 10, 4),          # username schema definition object
-    # ("models/user.js", 14, 11, 19, 6),         # blogs array schema definition
-    # ("models/user.js", 23, 29, 27, 4),         # toJSON transform function body
+    ("bloglist/utils/middleware.js", 28, 1, 38, 4), # trivial error messages
+
+    # C++ Examples:
+    # noparallel.cpp
+    ("parallel-programming/noparallel.cpp", 89, 5, 97, 1), # Calculate cost for older nodes
+    ("parallel-programming/noparallel.cpp", 98, 5, 103, 1), # cost for current node
+    ("parallel-programming/noparallel.cpp", 120, 1, 129, 1), # recursive dfs calls
+    ("parallel-programming/noparallel.cpp", 31, 1, 40, 1), # trivial print function
+
+    # taskparallel.cpp
+    ("parallel-programming/taskparallel.cpp", 180, 5, 179, 1), # omp task calls
+    ("parallel-programming/taskparallel.cpp", 156, 9, 189, 1), # sequential calls
+    ("parallel-programming/taskparallel.cpp", 206, 1, 214, 1), # omp parallel and single call
+
+    # dataparallelism.cpp
+    ("parallel-programming/dataparallelsim.cpp", 129, 1, 141, 1), # no omp tasks
+    ("parallel-programming/dataparallelsim.cpp", 212, 1, 221, 1), # omp parallel for
+    ("parallel-programming/dataparallelsim.cpp", 164, 1, 188, 1), # bfs state generation
+    ("parallel-programming/dataparallelsim.cpp", 190, 1, 190, 55), # break condition
 ]
 
 dataset = []
-project_base_dir = "bloglist"
+project_base_dir = "projects"
 
 for definition in split_definitions:
     sample = create_sample(*definition, base_dir=project_base_dir)
