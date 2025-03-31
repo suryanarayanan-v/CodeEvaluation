@@ -5,7 +5,7 @@ PYTHON_EXECUTABLE = "python"
 EVAL_SCRIPT = "evaluate_model.py"
 DATASET_PATH = "completion_dataset.jsonl"
 OUTPUT_DIR = "eval_results"
-BATCH_SIZE = 2
+BATCH_SIZE = 1
 HF_TOKEN = os.environ['hf_token']
 
 models_with_fim = [
