@@ -334,9 +334,7 @@
     ```
 
 *   **Review Comments:**
-    *   **Generated Code Correctness:** In this case the generated code is not correct since the method we want to call is 
-    "findByIdAndDelete". But this is expected because the model does not have access to the models/Blog.js file.
-    *   **Suggestions/Concerns:** A mechanism to add context from other files would fix this issue. 
+    *   **Generated Code Correctness:** In this case, the recomended call is findByIdAndDelete because it uses the monogoDB's delete command instead of modify. But this should still work.
     *   **Verdict:** Needs Minor Fix. This error can be easily detected by an IDE and can be easily be fixed.
 
 ---
