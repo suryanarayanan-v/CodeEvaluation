@@ -4,6 +4,8 @@ This project evaluates the performance of various Large Language Models (LLMs) o
 
 ## Overview
 
+This project evaluates the performance of various Large Language Models (LLMs) on code completion tasks, specifically focusing on Fill-in-the-Middle (FIM). The evaluation uses a custom dataset containing JavaScript (Node.js/Express) and C++ examples, developed as a solo project. **This dataset (`completion_dataset.jsonl`) was generated using the `split_sections.py` script, which partitions specified sections of the source code files into prefix, middle (the target completion), and suffix segments based on manually defined line/character coordinates.**
+
 The primary goal was to assess how well different LLMs could generate missing code segments within existing files. I tested models with FIM capabilities and compared their outputs against ground truth using Exact Match and CHRF metrics.
 
 The dataset includes code from two distinct projects:
