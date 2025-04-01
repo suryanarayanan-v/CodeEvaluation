@@ -62,9 +62,7 @@ A detailed evaluation report for the best-performing model (Deepseek-Coder) is a
 
 3.  **Set Hugging Face Token (if needed for gated models):**
     ```bash
-    export HF_TOKEN="your_huggingface_token" # Linux/macOS
-    # or
-    $env:HF_TOKEN="your_huggingface_token" # Windows PowerShell
+    export hf_token="your_huggingface_token"
     ```
 
 ## Running Evaluations
@@ -92,7 +90,7 @@ A detailed evaluation report for the best-performing model (Deepseek-Coder) is a
             # --temperature 0.2 # Optional: Adjust as needed
         ```
     *   `--use_fim`: Enables Fill-in-the-Middle prompting (ensure the model supports it and the script has the correct tokens configured). Omit this flag for standard causal completion.
-    *   `--quantization`: Use 4 or 8 for quantization (requires `bitsandbytes`).
+    *   `--quantization`: Use 4 or 8 for quantization (requires `bitsandbytes`). Use only when there is a lack of VRAM as it will degrade perfomance. 
     *   `--batch_size`: Adjust based on your available VRAM.
 
 ## Generating Report Structure
